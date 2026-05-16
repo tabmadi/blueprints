@@ -8,6 +8,16 @@ and managed from one place.
 
 - `templates/` — reusable starter templates (language- or platform-specific scaffolding)
 - `examples/` — complete example projects demonstrating a specific stack or integration
+- `scripts/` — helper scripts for managing submodules and the monorepo
+
+## 🛠️ Scripts
+
+Utility scripts for day-to-day repo maintenance.
+
+| Script                  | Description                                                                                                                                                       |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `scripts/commit-all.sh` | Commits all changes (staged, unstaged, and untracked) in every submodule and the root repo with a single message. Usage: `./scripts/commit-all.sh "your message"` |
+| `scripts/push-all.sh`   | Pushes the current branch in every submodule and the root repo. Usage: `./scripts/push-all.sh`                                                                    |
 
 ## 🧰 Templates
 
