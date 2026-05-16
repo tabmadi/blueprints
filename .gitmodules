@@ -1,0 +1,54 @@
+[submodule "templates/readme-template"]
+	path = templates/readme-template
+	url = git@github.com:tabmadi/readme-template.git
+[submodule "templates/github-project-template"]
+	path = templates/github-project-template
+	url = git@github.com:tabmadi/github-project-template.git
+[submodule "templates/go-template"]
+	path = templates/go-template
+	url = git@github.com:tabmadi/go-template.git
+[submodule "templates/python-template"]
+	path = templates/python-template
+	url = git@github.com:tabmadi/python-template.git
+[submodule "templates/ts-template"]
+	path = templates/ts-template
+	url = git@github.com:tabmadi/ts-template.git
+[submodule "templates/microservices-monorepo-template"]
+	path = templates/microservices-monorepo-template
+	url = git@github.com:tabmadi/microservices-monorepo-template.git
+[submodule "templates/monolith-monorepo-template"]
+	path = templates/monolith-monorepo-template
+	url = git@github.com:tabmadi/monolith-monorepo-template.git
+[submodule "examples/go-tyk-example"]
+	path = examples/go-tyk-example
+	url = git@github.com:tabmadi/go-tyk-example.git
+[submodule "examples/zendriver-example"]
+	path = examples/zendriver-example
+	url = git@github.com:tabmadi/zendriver-example.git
+[submodule "examples/python-stripe-example"]
+	path = examples/python-stripe-example
+	url = git@github.com:tabmadi/python-stripe-example.git
+[submodule "examples/react-auth0-example"]
+	path = examples/react-auth0-example
+	url = git@github.com:tabmadi/react-auth0-example.git
+[submodule "examples/go-oapi-sqlc-example"]
+	path = examples/go-oapi-sqlc-example
+	url = git@github.com:tabmadi/go-oapi-sqlc-example.git
+[submodule "examples/react-powersync-example"]
+	path = examples/react-powersync-example
+	url = git@github.com:tabmadi/react-powersync-example.git
+[submodule "examples/hardhat-example"]
+	path = examples/hardhat-example
+	url = git@github.com:tabmadi/hardhat-example.git
+[submodule "examples/temporal-example"]
+	path = examples/temporal-example
+	url = git@github.com:tabmadi/temporal-example.git
+[submodule "examples/moon-example"]
+	path = examples/moon-example
+	url = git@github.com:tabmadi/moon-example.git
+[submodule "examples/pants-example"]
+	path = examples/pants-example
+	url = git@github.com:tabmadi/pants-example.git
+[submodule "examples/oapi-codegen-custom-generator-example"]
+	path = examples/oapi-codegen-custom-generator-example
+	url = git@github.com:tabmadi/oapi-codegen-custom-generator-example.git
