@@ -29,10 +29,11 @@ project layout.
 | [readme-template](https://github.com/tabmadi/readme-template)                                 | Standardized README template with AI-ready instructions for generating high-quality project READMEs.                                         |
 | [github-project-template](https://github.com/tabmadi/github-project-template)                 | Language-agnostic GitHub repo template with community health files, issue/PR templates, and shared tooling (Lefthook, Mise, Cocogitto, Act). |
 | [monolith-monorepo-template](https://github.com/tabmadi/monolith-monorepo-template)           | Monorepo template for small monolith projects (Node.js backend + React frontend).                                                            |
-| [microservices-monorepo-template](https://github.com/tabmadi/microservices-monorepo-template) | Monorepo template for larger microservices projects (Go backend + Next.js frontend).                                                         |
+| [sovereign-platform-template](https://github.com/tabmadi/sovereign-platform-template)         | Self-hosted platform monorepo reference architecture, with every reusable decision recorded as an ADR and enforced in CI.                    |
 | [go-template](https://github.com/tabmadi/go-template)                                         | Modern Go template following the Standard Go Project Layout, with golangci-lint, mise, lefthook, and act.                                    |
 | [python-template](https://github.com/tabmadi/python-template)                                 | Python 3.12+ template using the `src` layout, `uv` for dependency management, and `ruff` for linting/formatting.                             |
 | [ts-template](https://github.com/tabmadi/ts-template)                                         | TypeScript template using the Bun runtime, Biome for lint/format, and strict ESNext config.                                                  |
+| [java-template](https://github.com/tabmadi/java-template)                                     | Java template scaffolded from the shared GitHub project tooling (Mise, Lefthook, Act).                                                       |
 
 ## 🧪 Examples
 

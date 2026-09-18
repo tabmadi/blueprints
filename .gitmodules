@@ -13,9 +13,6 @@
 [submodule "templates/ts-template"]
 	path = templates/ts-template
 	url = git@github.com:tabmadi/ts-template.git
-[submodule "templates/microservices-monorepo-template"]
-	path = templates/microservices-monorepo-template
-	url = git@github.com:tabmadi/microservices-monorepo-template.git
 [submodule "templates/monolith-monorepo-template"]
 	path = templates/monolith-monorepo-template
 	url = git@github.com:tabmadi/monolith-monorepo-template.git
@@ -52,3 +49,9 @@
 [submodule "examples/oapi-codegen-custom-generator-example"]
 	path = examples/oapi-codegen-custom-generator-example
 	url = git@github.com:tabmadi/oapi-codegen-custom-generator-example.git
+[submodule "templates/java-template"]
+	path = templates/java-template
+	url = git@github.com:tabmadi/java-template.git
+[submodule "templates/sovereign-platform-template"]
+	path = templates/sovereign-platform-template
+	url = git@github.com:tabmadi/sovereign-platform-template.git
