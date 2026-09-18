@@ -32,7 +32,7 @@ project layout.
 | [go-template](https://github.com/tabmadi/go-template)                                         | Modern Go template following the Standard Go Project Layout, with golangci-lint, mise, lefthook, and act.                                    |
 | [python-template](https://github.com/tabmadi/python-template)                                 | Python 3.12+ template using the `src` layout, `uv` for dependency management, and `ruff` for linting/formatting.                             |
 | [ts-template](https://github.com/tabmadi/ts-template)                                         | TypeScript template using the Bun runtime, Biome for lint/format, and strict ESNext config.                                                  |
-| [java-template](https://github.com/tabmadi/java-template)                                     | Java template scaffolded from the shared GitHub project tooling (Mise, Lefthook, Act).                                                       |
+| [java-template](https://github.com/tabmadi/java-template)                                     | Java 25 LTS template on Gradle (Kotlin DSL), with Spotless, Error Prone + NullAway, JUnit 5, and JaCoCo.                                     |
 
 ## 🧪 Examples
 
