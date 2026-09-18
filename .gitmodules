@@ -13,9 +13,6 @@
 [submodule "templates/ts-template"]
 	path = templates/ts-template
 	url = git@github.com:tabmadi/ts-template.git
-[submodule "templates/monolith-monorepo-template"]
-	path = templates/monolith-monorepo-template
-	url = git@github.com:tabmadi/monolith-monorepo-template.git
 [submodule "examples/go-tyk-example"]
 	path = examples/go-tyk-example
 	url = git@github.com:tabmadi/go-tyk-example.git
