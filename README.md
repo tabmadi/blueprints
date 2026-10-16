@@ -1,88 +1,114 @@
-# 🗂️ Blueprints
+# Blueprints
 
-A central index of my personal GitHub templates and example projects. Instead of starting from zero, I bootstrap new
-work from one of these blueprints. This repository tracks them all as git submodules so they can be browsed, updated,
-and managed from one place.
+The index of my GitHub templates and example projects. I start new work from one of these blueprints, not from zero. This repo tracks each one as a git submodule, so I can browse, update, and keep them in step from one place.
 
-## 📦 Layout
+## Layout
 
-- `templates/` — reusable starter templates (language- or platform-specific scaffolding)
-- `examples/` — complete example projects demonstrating a specific stack or integration
-- `scripts/` — helper scripts for managing submodules and the monorepo
+| Path | Holds |
+| --- | --- |
+| `templates/` | Bases to start a new project from |
+| `examples/` | Projects that each teach one stack or integration |
+| `scripts/` | Scripts that act on every submodule at once |
 
-## 🛠️ Scripts
+## Conventions
 
-Utility scripts for day-to-day repo maintenance.
+Every blueprint follows one documentation convention and one tooling baseline. This repo exists to keep them the same in every repo.
 
-| Script                  | Description                                                                                                                                                       |
-|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `scripts/commit-all.sh` | Commits all changes (staged, unstaged, and untracked) in every submodule and the root repo with a single message. Usage: `./scripts/commit-all.sh "your message"` |
-| `scripts/push-all.sh`   | Pushes the current branch in every submodule and the root repo. Usage: `./scripts/push-all.sh`                                                                    |
+- **Simple English, no emoji.** This applies to every README, doc, comment, and `AGENTS.md`.
+- **Each kind of doc has one place.** The README helps a reader choose the repo and start. `docs/` holds procedures and lookups. An ADR holds a decision.
+- **One toolchain shape.** `mise` pins every tool and runs every task. Every template and example has the tasks `setup`, `format`, `lint`, `test`, `check`, and `ci`, and its git hooks and CI workflow both run `mise run ci`. A platform has its own, larger task set on the same `mise` base.
+- **The size depends on the kind of repo.** A rule that is right for a platform is too heavy for a small example.
 
-## 🧰 Templates
+| Size | Repos | README skeleton | ADRs |
+| --- | --- | --- | --- |
+| Platform | `sovereign-platform-template`, `nextjs-mvp-template` | Platform: selection guidance and getting started | A full set |
+| Template | The other templates | Template | 0000 foundations, 0001 doc rules, 0100 toolchain |
+| Example | Everything in `examples/` | Example: what it shows, run it, how it works, what is missing | None |
 
-Base scaffolding for new projects. Each one ships with modern tooling (mise, lefthook, CI, etc.) and a consistent
-project layout.
+### Where the convention lives
 
-| Template                                                                                      | Description                                                                                                                                  |
-|-----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| [readme-template](https://github.com/tabmadi/readme-template)                                 | Standardized README template with AI-ready instructions for generating high-quality project READMEs.                                         |
-| [github-project-template](https://github.com/tabmadi/github-project-template)                 | Language-agnostic GitHub repo template with community health files, issue/PR templates, and shared tooling (Lefthook, Mise, Cocogitto, Act). |
-| [sovereign-platform-template](https://github.com/tabmadi/sovereign-platform-template)         | Self-hosted platform monorepo reference architecture, with every reusable decision recorded as an ADR and enforced in CI.                    |
-| [go-template](https://github.com/tabmadi/go-template)                                         | Modern Go template following the Standard Go Project Layout, with golangci-lint, mise, lefthook, and act.                                    |
-| [python-template](https://github.com/tabmadi/python-template)                                 | Python 3.12+ template using the `src` layout, `uv` for dependency management, and `ruff` for linting/formatting.                             |
-| [ts-template](https://github.com/tabmadi/ts-template)                                         | TypeScript template using the Bun runtime, Biome for lint/format, and strict ESNext config.                                                  |
-| [java-template](https://github.com/tabmadi/java-template)                                     | Java 25 LTS template on Gradle (Kotlin DSL), with Spotless, Error Prone + NullAway, JUnit 5, and JaCoCo.                                     |
-| [nextjs-mvp-template](https://github.com/tabmadi/nextjs-mvp-template)                         | Next.js MVP template for one product, one deployable, one team, with Drizzle, Bun, Biome, and ADR-driven docs.                               |
+| Source | Holds |
+| --- | --- |
+| [github-project-template](https://github.com/tabmadi/github-project-template) | The tooling baseline and ADR-0001, the doc rules. Every new repo inherits both |
+| [readme-template](https://github.com/tabmadi/readme-template) | The README and `AGENTS.md` skeleton for each size, and the instructions to fill them |
+| ADR-0001 in `sovereign-platform-template` | The long form of the doc rules, for a platform |
 
-## 🧪 Examples
+### Keeping the copies in sync
 
-End-to-end example projects that show how to wire a real stack together.
+A repo made from a template copies files. It does not link to them. So every rule exists in many copies, and the copies drift. To control this:
 
-| Example                                                                                                   | Description                                                                                                   |
-|-----------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
-| [go-oapi-sqlc-example](https://github.com/tabmadi/go-oapi-sqlc-example)                                   | Production-ready Go REST API using an OpenAPI-first workflow with `oapi-codegen`, `sqlc`, and golang-migrate. |
-| [oapi-codegen-custom-generator-example](https://github.com/tabmadi/oapi-codegen-custom-generator-example) | How to build custom code generators on top of `oapi-codegen` using Go `text/template`.                        |
-| [go-tyk-example](https://github.com/tabmadi/go-tyk-example)                                               | Go service example integrating with the Tyk API gateway.                                                      |
-| [temporal-example](https://github.com/tabmadi/temporal-example)                                           | Example project demonstrating Temporal workflows.                                                             |
-| [python-stripe-example](https://github.com/tabmadi/python-stripe-example)                                 | Python Stripe payments integration using the `stripe` SDK and `pydantic-settings` for config.                 |
-| [zendriver-example](https://github.com/tabmadi/zendriver-example)                                         | Passive web scraping example using Zendriver and the Chrome DevTools Protocol to intercept network traffic.   |
-| [react-auth0-example](https://github.com/tabmadi/react-auth0-example)                                     | React application demonstrating Auth0 authentication with pnpm and moonrepo proto.                            |
-| [react-powersync-example](https://github.com/tabmadi/react-powersync-example)                             | Minimal React + PowerSync integration showing local-first DB setup, a table, and basic queries.               |
-| [hardhat-example](https://github.com/tabmadi/hardhat-example)                                             | Hardhat project example for Ethereum smart contract development.                                              |
-| [moon-example](https://github.com/tabmadi/moon-example)                                                   | Example monorepo managed with Moon.                                                                           |
-| [pants-example](https://github.com/tabmadi/pants-example)                                                 | Example monorepo managed with Pants build system.                                                             |
-| [central-limit-order-book-example](https://github.com/tabmadi/central-limit-order-book-example)           | Small, fully tested central limit order book and matching engine in TypeScript on Bun.                        |
+1. Change a rule in its source repo first.
+2. In the same pass, apply the change to every repo of that size.
+3. Keep each copy small. This is why templates have three ADRs and examples have none.
 
-## 🚀 Getting Started
+Renovate keeps the tool pins of each repo current, so the versions do not drift by hand.
 
-Clone with submodules:
+## Templates
+
+| Template | Size | Description |
+| --- | --- | --- |
+| [github-project-template](https://github.com/tabmadi/github-project-template) | Template | The language-agnostic base: community files, issue and PR forms, the pinned toolchain, git hooks, the CI gate, and the doc rules |
+| [readme-template](https://github.com/tabmadi/readme-template) | Template | The README and `AGENTS.md` skeletons for each repo size, with instructions for a coding agent or a chat assistant |
+| [go-template](https://github.com/tabmadi/go-template) | Template | Go with the Standard Go Project Layout, every `golangci-lint` linter, and a static binary |
+| [python-template](https://github.com/tabmadi/python-template) | Template | Python with the `src` layout, `uv`, `ruff` with every rule, `pyrefly`, and `pytest` |
+| [ts-template](https://github.com/tabmadi/ts-template) | Template | TypeScript on Bun with Biome and a strict `tsconfig`, and no build step |
+| [java-template](https://github.com/tabmadi/java-template) | Template | Java 25 LTS on Gradle with Spotless, Error Prone, NullAway, JUnit, and a JaCoCo floor |
+| [nextjs-mvp-template](https://github.com/tabmadi/nextjs-mvp-template) | Platform | A Next.js modular monolith for one product, one deployable, and one team, with ADR-driven docs |
+| [sovereign-platform-template](https://github.com/tabmadi/sovereign-platform-template) | Platform | A self-hosted platform monorepo, with every reusable decision recorded as an ADR and enforced in CI |
+
+## Examples
+
+| Example | Status | Description |
+| --- | --- | --- |
+| [central-limit-order-book-example](https://github.com/tabmadi/central-limit-order-book-example) | Complete | An order book and matching engine in TypeScript on Bun, small enough to read in one sitting |
+| [go-oapi-sqlc-example](https://github.com/tabmadi/go-oapi-sqlc-example) | Complete | A Go REST API built contract first, with `oapi-codegen` for the server and `sqlc` for the queries |
+| [oapi-codegen-custom-generator-example](https://github.com/tabmadi/oapi-codegen-custom-generator-example) | Complete | A custom Go code generator on the `oapi-codegen` loader and `text/template` |
+| [go-tyk-example](https://github.com/tabmadi/go-tyk-example) | Complete | A Go service behind the Tyk gateway, which validates requests against the OpenAPI spec |
+| [python-stripe-example](https://github.com/tabmadi/python-stripe-example) | Complete | A Stripe Checkout Session from Python, with typed settings from `pydantic-settings` |
+| [zendriver-example](https://github.com/tabmadi/zendriver-example) | Complete | Passive scraping with Zendriver, which reads network traffic through the Chrome DevTools Protocol |
+| [react-auth0-example](https://github.com/tabmadi/react-auth0-example) | Complete | Auth0 sign-in and an API access token in a React app |
+| [react-powersync-example](https://github.com/tabmadi/react-powersync-example) | Complete | A local-first SQLite database in the browser with PowerSync and React |
+| [pants-example](https://github.com/tabmadi/pants-example) | Complete | A Python monorepo built with Pants, with one PEX for each service |
+| [hardhat-example](https://github.com/tabmadi/hardhat-example) | Incomplete | A Hardhat project with the toolchain set up, and no contract yet |
+| [moon-example](https://github.com/tabmadi/moon-example) | Incomplete | A monorepo managed with moon. The repo has no code yet |
+| [temporal-example](https://github.com/tabmadi/temporal-example) | Incomplete | A Temporal workflow. The repo has no code yet |
+
+## Scripts
+
+| Script | Does |
+| --- | --- |
+| `scripts/commit-all.sh "message"` | Commits all changes, staged, unstaged, and untracked, in every submodule and then in this repo, with one message |
+| `scripts/push-all.sh` | Pushes the current branch of every submodule and then of this repo |
+
+## Getting started
+
+Clone with the submodules:
 
 ```bash
 git clone --recurse-submodules git@github.com:tabmadi/blueprints.git
 ```
 
-Or, if you've already cloned the repo:
+In a clone without them, fetch them:
 
 ```bash
 git submodule update --init --recursive
 ```
 
-## 🔄 Updating Submodules
+## Updating submodules
 
-Pull the latest commits for every blueprint:
+Pull the latest commits of every blueprint:
 
 ```bash
 git submodule update --remote --merge
 ```
 
-Update a single blueprint:
+Pull the latest commits of one blueprint:
 
 ```bash
 git submodule update --remote templates/go-template
 ```
 
-## ➕ Adding a New Blueprint
+## Adding a blueprint
 
 ```bash
 # A template
@@ -92,8 +118,8 @@ git submodule add git@github.com:tabmadi/<name>.git templates/<name>
 git submodule add git@github.com:tabmadi/<name>.git examples/<name>
 ```
 
-Then add a row to the table above and commit both `.gitmodules` and the new submodule pointer.
+Then choose its size from [Conventions](#conventions), and follow the skeleton for that size. Add a row to the matching table, and commit both `.gitmodules` and the new submodule pointer.
 
-## 📜 License
+## License
 
 See [LICENSE](LICENSE).
