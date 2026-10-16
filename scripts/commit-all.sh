@@ -12,9 +12,7 @@ ROOT="$(cd "$(dirname "$0")" && pwd)"
 echo "==> Committing in submodules..."
 git -C "$ROOT" submodule foreach --recursive "
   if ! git diff --quiet || ! git diff --cached --quiet || [ -n \"\$(git ls-files --others --exclude-standard)\" ]; then
-    git add -A
-    git commit -m '$MSG'
-    echo \"  committed: \$displaypath\"
+    git add -A && git commit -m '$MSG' && echo \"  committed: \$displaypath\"
   else
     echo \"  nothing to commit: \$displaypath\"
   fi

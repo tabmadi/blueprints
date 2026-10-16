@@ -5,8 +5,7 @@ ROOT="$(cd "$(dirname "$0")" && pwd)"
 
 echo "==> Pushing submodules..."
 git -C "$ROOT" submodule foreach --recursive "
-  git push
-  echo \"  pushed: \$displaypath\"
+  git push && echo \"  pushed: \$displaypath\"
 "
 
 echo
