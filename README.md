@@ -33,6 +33,7 @@ project layout.
 | [python-template](https://github.com/tabmadi/python-template)                                 | Python 3.12+ template using the `src` layout, `uv` for dependency management, and `ruff` for linting/formatting.                             |
 | [ts-template](https://github.com/tabmadi/ts-template)                                         | TypeScript template using the Bun runtime, Biome for lint/format, and strict ESNext config.                                                  |
 | [java-template](https://github.com/tabmadi/java-template)                                     | Java 25 LTS template on Gradle (Kotlin DSL), with Spotless, Error Prone + NullAway, JUnit 5, and JaCoCo.                                     |
+| [nextjs-mvp-template](https://github.com/tabmadi/nextjs-mvp-template)                         | Next.js MVP template for one product, one deployable, one team, with Drizzle, Bun, Biome, and ADR-driven docs.                               |
 
 ## 🧪 Examples
 
@@ -51,6 +52,7 @@ End-to-end example projects that show how to wire a real stack together.
 | [hardhat-example](https://github.com/tabmadi/hardhat-example)                                             | Hardhat project example for Ethereum smart contract development.                                              |
 | [moon-example](https://github.com/tabmadi/moon-example)                                                   | Example monorepo managed with Moon.                                                                           |
 | [pants-example](https://github.com/tabmadi/pants-example)                                                 | Example monorepo managed with Pants build system.                                                             |
+| [central-limit-order-book-example](https://github.com/tabmadi/central-limit-order-book-example)           | Small, fully tested central limit order book and matching engine in TypeScript on Bun.                        |
 
 ## 🚀 Getting Started
 

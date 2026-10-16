@@ -52,3 +52,9 @@
 [submodule "templates/sovereign-platform-template"]
 	path = templates/sovereign-platform-template
 	url = git@github.com:tabmadi/sovereign-platform-template.git
+[submodule "templates/nextjs-mvp-template"]
+	path = templates/nextjs-mvp-template
+	url = git@github.com:tabmadi/nextjs-mvp-template.git
+[submodule "examples/central-limit-order-book-example"]
+	path = examples/central-limit-order-book-example
+	url = git@github.com:tabmadi/central-limit-order-book-example.git
