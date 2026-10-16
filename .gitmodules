@@ -58,3 +58,6 @@
 [submodule "examples/central-limit-order-book-example"]
 	path = examples/central-limit-order-book-example
 	url = git@github.com:tabmadi/central-limit-order-book-example.git
+[submodule "templates/godot-template"]
+	path = templates/godot-template
+	url = git@github.com:tabmadi/godot-template.git

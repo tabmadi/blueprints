@@ -53,6 +53,7 @@ Renovate keeps the tool pins of each repo current, so the versions do not drift 
 | [python-template](https://github.com/tabmadi/python-template) | Template | Python with the `src` layout, `uv`, `ruff` with every rule, `pyrefly`, and `pytest` |
 | [ts-template](https://github.com/tabmadi/ts-template) | Template | TypeScript on Bun with Biome and a strict `tsconfig`, and no build step |
 | [java-template](https://github.com/tabmadi/java-template) | Template | Java 25 LTS on Gradle with Spotless, Error Prone, NullAway, JUnit, and a JaCoCo floor |
+| [godot-template](https://github.com/tabmadi/godot-template) | Template | A Godot game in GDScript, 2D by default, with static typing enforced, `gdtoolkit`, and a headless test runner |
 | [nextjs-mvp-template](https://github.com/tabmadi/nextjs-mvp-template) | Platform | A Next.js modular monolith for one product, one deployable, and one team, with ADR-driven docs |
 | [sovereign-platform-template](https://github.com/tabmadi/sovereign-platform-template) | Platform | A self-hosted platform monorepo, with every reusable decision recorded as an ADR and enforced in CI |
 
