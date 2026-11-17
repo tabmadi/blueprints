@@ -1,6 +1,3 @@
-[submodule "templates/readme-template"]
-	path = templates/readme-template
-	url = git@github.com:tabmadi/readme-template.git
 [submodule "templates/github-project-template"]
 	path = templates/github-project-template
 	url = git@github.com:tabmadi/github-project-template.git
