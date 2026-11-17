@@ -12,43 +12,43 @@ The index of my GitHub templates and example projects. I start new work from one
 
 ## Conventions
 
-Every blueprint follows one documentation convention and one tooling baseline. This repo exists to keep them the same in every repo.
+Every blueprint follows one documentation convention and one toolchain. This repo exists to keep them the same in every repo.
 
-- **Simple English, no emoji.** This applies to every README, doc, comment, and `AGENTS.md`.
+- **Simple English, no emoji.** This applies to every README, doc, comment, and `AGENTS.md`. tablint checks it.
 - **Each kind of doc has one place.** The README helps a reader choose the repo and start. `docs/` holds procedures and lookups. An ADR holds a decision.
-- **One toolchain shape.** `mise` pins every tool and runs every task. Every template and example has the tasks `setup`, `format`, `lint`, `test`, `check`, and `ci`, and its git hooks and CI workflow both run `mise run ci`. A platform has its own, larger task set on the same `mise` base.
+- **One toolchain shape.** Nix pins every tool, and `just` runs every task. Every repo has the recipes `setup`, `format`, `lint`, `test`, `check`, and `ci`, and its git hooks and CI workflow both run `just ci`.
 - **The size depends on the kind of repo.** A rule that is right for a platform is too heavy for a small example.
 
-| Size | Repos | README skeleton | ADRs |
+| Size | Repos | README sections | ADRs |
 | --- | --- | --- | --- |
-| Platform | `sovereign-platform-template`, `nextjs-mvp-template` | Platform: selection guidance and getting started | A full set |
-| Template | The other templates | Template | 0000 foundations, 0001 doc rules, 0100 toolchain |
-| Example | Everything in `examples/` | Example: what it shows, run it, how it works, what is missing | None |
+| Platform | `sovereign-platform-template`, `nextjs-mvp-template` | Platform, per ADR-0001 | A full set |
+| Template | The other templates | Template, per ADR-0001 | 0000 foundations, 0001 doc rules, 0100 toolchain |
+| Example | Everything in `examples/` | Example, per ADR-0001 | None |
 
 ### Where the convention lives
 
 | Source | Holds |
 | --- | --- |
-| [github-project-template](https://github.com/tabmadi/github-project-template) | The tooling baseline and ADR-0001, the doc rules. Every new repo inherits both |
-| [readme-template](https://github.com/tabmadi/readme-template) | The README and `AGENTS.md` skeleton for each size, and the instructions to fill them |
+| [github-project-template](https://github.com/tabmadi/github-project-template) | The files that every repo copies: ADR-0001, the configs in `.config/`, and the GitHub forms |
+| [tabnix](https://github.com/tabmadi/tabnix) | The shared Nix code: the dev shell, the git hooks, and the checks |
+| [tablint](https://github.com/tabmadi/tablint) | The check of ADR-0001: prose, comments, and ADRs |
 | ADR-0001 in `sovereign-platform-template` | The long form of the doc rules, for a platform |
 
 ### Keeping the copies in sync
 
-A repo made from a template copies files. It does not link to them. So every rule exists in many copies, and the copies drift. To control this:
+Text that a person reads is copied into each repo, so the repo stands on its own. Code that runs is shared: tabnix and tablint ship it, each repo pins a tag, and its gate decides when to move. Renovate keeps the pins current.
 
-1. Change a rule in its source repo first.
+To change a copied rule:
+
+1. Change it in its source repo first.
 2. In the same pass, apply the change to every repo of that size.
-3. Keep each copy small. This is why templates have three ADRs and examples have none.
-
-Renovate keeps the tool pins of each repo current, so the versions do not drift by hand.
+3. Run `scripts/check-drift.sh`. It fails when a shared file of a repo on the Nix baseline differs from github-project-template.
 
 ## Templates
 
 | Template | Size | Description |
 | --- | --- | --- |
 | [github-project-template](https://github.com/tabmadi/github-project-template) | Template | The language-agnostic base: community files, issue and PR forms, the pinned toolchain, git hooks, the CI gate, and the doc rules |
-| [readme-template](https://github.com/tabmadi/readme-template) | Template | The README and `AGENTS.md` skeletons for each repo size, with instructions for a coding agent or a chat assistant |
 | [go-template](https://github.com/tabmadi/go-template) | Template | Go with the Standard Go Project Layout, every `golangci-lint` linter, and a static binary |
 | [python-template](https://github.com/tabmadi/python-template) | Template | Python with the `src` layout, `uv`, `ruff` with every rule, `pyrefly`, and `pytest` |
 | [ts-template](https://github.com/tabmadi/ts-template) | Template | TypeScript on Bun with Biome and a strict `tsconfig`, and no build step |
@@ -78,6 +78,7 @@ Renovate keeps the tool pins of each repo current, so the versions do not drift 
 | --- | --- |
 | `scripts/commit-all.sh "message"` | Commits all changes, staged, unstaged, and untracked, in every submodule and then in this repo, with one message |
 | `scripts/push-all.sh` | Pushes the current branch of every submodule and then of this repo |
+| `scripts/check-drift.sh` | Compares the shared files of every repo on the Nix baseline with github-project-template |
 
 ## Getting started
 
@@ -117,7 +118,7 @@ git submodule add git@github.com:tabmadi/<name>.git templates/<name>
 git submodule add git@github.com:tabmadi/<name>.git examples/<name>
 ```
 
-Then choose its size from [Conventions](#conventions), and follow the skeleton for that size. Add a row to the matching table, and commit both `.gitmodules` and the new submodule pointer.
+Then choose its size from [Conventions](#conventions), and give its README the sections that ADR-0001 sets for that size. Add a row to the matching table, and commit both `.gitmodules` and the new submodule pointer.
 
 ## License
 
