@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
-# Compares the shared files of every blueprint on the Nix baseline with github-project-template,
-# the source of the convention. A blueprint without flake.nix is not on the baseline, so it is skipped.
+# Compares the shared files of every template on the Nix baseline with github-project-template,
+# the source of the convention. A template without flake.nix is not on the baseline, so it is skipped.
+# The examples keep their own toolchain, so they are not checked.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SOURCE="$ROOT/templates/github-project-template"
 
-# Files that every blueprint holds unchanged.
+# Files that every template holds unchanged.
 SHARED=(
   .config/cog.toml
   .config/dprint.json
@@ -23,22 +24,16 @@ SHARED=(
   .github/renovate.json
   .github/workflows/check.yml
   LICENSE
-)
-
-# Files that every blueprint with ADRs holds unchanged. An example has no ADRs.
-SHARED_ADR=(
   docs/adr/0001-documentation-conventions.md
   docs/adr/_template.md
 )
 
 drift=0
 checked=0
-for repo in "$ROOT"/templates/* "$ROOT"/examples/*; do
+for repo in "$ROOT"/templates/*; do
   name="${repo#"$ROOT"/}"
   [[ "$repo" == "$SOURCE" || ! -f "$repo/flake.nix" ]] && continue
-  files=("${SHARED[@]}")
-  [[ "$name" == templates/* ]] && files+=("${SHARED_ADR[@]}")
-  for f in "${files[@]}"; do
+  for f in "${SHARED[@]}"; do
     if [[ ! -f "$repo/$f" ]]; then
       echo "$name: $f is missing"
       drift=1
@@ -51,6 +46,6 @@ for repo in "$ROOT"/templates/* "$ROOT"/examples/*; do
 done
 
 if [[ $drift -eq 0 ]]; then
-  echo "No drift. Blueprints checked against github-project-template: $checked."
+  echo "No drift. Templates checked against github-project-template: $checked."
 fi
 exit $drift

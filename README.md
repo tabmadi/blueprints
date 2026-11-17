@@ -12,18 +12,17 @@ The index of my GitHub templates and example projects. I start new work from one
 
 ## Conventions
 
-Every blueprint follows one documentation convention and one toolchain. This repo exists to keep them the same in every repo.
+Every template follows one documentation convention and one toolchain. This repo exists to keep them the same in every template. The examples keep their own toolchain and docs, and these conventions do not apply to them.
 
 - **Simple English, no emoji.** This applies to every README, doc, comment, and `AGENTS.md`. tablint checks it.
 - **Each kind of doc has one place.** The README helps a reader choose the repo and start. `docs/` holds procedures and lookups. An ADR holds a decision.
 - **One toolchain shape.** Nix pins every tool, and `just` runs every task. Every repo has the recipes `setup`, `format`, `lint`, `test`, `check`, and `ci`, and its git hooks and CI workflow both run `just ci`.
-- **The size depends on the kind of repo.** A rule that is right for a platform is too heavy for a small example.
+- **The size depends on the kind of repo.** A rule that is right for a platform is too heavy for a small template.
 
 | Size | Repos | README sections | ADRs |
 | --- | --- | --- | --- |
 | Platform | `sovereign-platform-template`, `nextjs-mvp-template` | Platform, per ADR-0001 | A full set |
 | Template | The other templates | Template, per ADR-0001 | 0000 foundations, 0001 doc rules, 0100 toolchain |
-| Example | Everything in `examples/` | Example, per ADR-0001 | None |
 
 ### Where the convention lives
 
@@ -42,7 +41,7 @@ To change a copied rule:
 
 1. Change it in its source repo first.
 2. In the same pass, apply the change to every repo of that size.
-3. Run `scripts/check-drift.sh`. It fails when a shared file of a repo on the Nix baseline differs from github-project-template.
+3. Run `scripts/check-drift.sh`. It fails when a shared file of a template on the Nix baseline differs from github-project-template.
 
 ## Templates
 
@@ -78,7 +77,7 @@ To change a copied rule:
 | --- | --- |
 | `scripts/commit-all.sh "message"` | Commits all changes, staged, unstaged, and untracked, in every submodule and then in this repo, with one message |
 | `scripts/push-all.sh` | Pushes the current branch of every submodule and then of this repo |
-| `scripts/check-drift.sh` | Compares the shared files of every repo on the Nix baseline with github-project-template |
+| `scripts/check-drift.sh` | Compares the shared files of every template on the Nix baseline with github-project-template |
 
 ## Getting started
 
@@ -118,7 +117,7 @@ git submodule add git@github.com:tabmadi/<name>.git templates/<name>
 git submodule add git@github.com:tabmadi/<name>.git examples/<name>
 ```
 
-Then choose its size from [Conventions](#conventions), and give its README the sections that ADR-0001 sets for that size. Add a row to the matching table, and commit both `.gitmodules` and the new submodule pointer.
+For a template, choose its size from [Conventions](#conventions), and give its README the sections that ADR-0001 sets for that size. Add a row to the matching table, and commit both `.gitmodules` and the new submodule pointer.
 
 ## License
 
