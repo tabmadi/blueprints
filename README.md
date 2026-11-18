@@ -8,6 +8,7 @@ The index of my GitHub templates and example projects. I start new work from one
 | --- | --- |
 | `templates/` | Bases to start a new project from |
 | `examples/` | Projects that each teach one stack or integration |
+| `tools/` | The shared code that every template runs: tabnix and tablint |
 | `scripts/` | Scripts that act on every submodule at once |
 
 ## Conventions
@@ -29,8 +30,8 @@ Every template follows one documentation convention and one toolchain. This repo
 | Source | Holds |
 | --- | --- |
 | [github-project-template](https://github.com/tabmadi/github-project-template) | The files that every repo copies: ADR-0001, the configs in `.config/`, and the GitHub forms |
-| [tabnix](https://github.com/tabmadi/tabnix) | The shared Nix code: the dev shell, the git hooks, and the checks |
-| [tablint](https://github.com/tabmadi/tablint) | The check of ADR-0001: prose, comments, and ADRs |
+| [tabnix](https://github.com/tabmadi/tabnix), in `tools/` | The shared Nix code: the dev shell, the git hooks, the checks, and the NixOS modules |
+| [tablint](https://github.com/tabmadi/tablint), in `tools/` | The check of ADR-0001: prose, comments, and ADRs |
 | ADR-0001 in `sovereign-platform-template` | The long form of the doc rules, for a platform |
 
 ### Keeping the copies in sync
@@ -70,6 +71,15 @@ To change a copied rule:
 | [hardhat-example](https://github.com/tabmadi/hardhat-example) | Incomplete | A Hardhat project with the toolchain set up, and no contract yet |
 | [moon-example](https://github.com/tabmadi/moon-example) | Incomplete | A monorepo managed with moon. The repo has no code yet |
 | [temporal-example](https://github.com/tabmadi/temporal-example) | Incomplete | A Temporal workflow. The repo has no code yet |
+
+## Tools
+
+A template runs this code through a pinned tag, never through these checkouts. A change here reaches a template only when the template moves its pin.
+
+| Tool | Description |
+| --- | --- |
+| [tabnix](https://github.com/tabmadi/tabnix) | The shared Nix toolchain as a flake-parts module, and opt-in NixOS modules for the machines that a repo runs |
+| [tablint](https://github.com/tabmadi/tablint) | The linter of the Simple English rules of ADR-0001 |
 
 ## Scripts
 
@@ -115,6 +125,9 @@ git submodule add git@github.com:tabmadi/<name>.git templates/<name>
 
 # An example
 git submodule add git@github.com:tabmadi/<name>.git examples/<name>
+
+# A tool
+git submodule add git@github.com:tabmadi/<name>.git tools/<name>
 ```
 
 For a template, choose its size from [Conventions](#conventions), and give its README the sections that ADR-0001 sets for that size. Add a row to the matching table, and commit both `.gitmodules` and the new submodule pointer.
