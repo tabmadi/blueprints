@@ -20,18 +20,18 @@ Every template follows one documentation convention and one toolchain. This repo
 - **One toolchain shape.** Nix pins every tool, and `just` runs every task. Every repo has the recipes `setup`, `format`, `lint`, `test`, `check`, and `ci`, and its git hooks and CI workflow both run `just ci`.
 - **The size depends on the kind of repo.** A rule that is right for a platform is too heavy for a small template.
 
-| Size | Repos | README sections | ADRs |
-| --- | --- | --- | --- |
-| Platform | `sovereign-platform-template`, `nextjs-mvp-template` | Platform, per ADR-0001 | A full set, with the shared toolchain ADRs 0100 to 0105 |
-| Template | The other templates | Template, per ADR-0001 | 0000 foundations, 0001 doc rules, the shared toolchain ADRs 0100 to 0105, and 0110 for the language |
+| Size | Repos | README sections | ADRs | Requirements |
+| --- | --- | --- | --- | --- |
+| Platform | `sovereign-platform-template`, `nextjs-mvp-template` | Platform, per ADR-0001 | A full set, with the shared toolchain ADRs 0100 to 0105 | ADR-0602 and requirements files with IDs that tests cite |
+| Template | The other templates | Template, per ADR-0001 | 0000 foundations, 0001 doc rules, the shared toolchain ADRs 0100 to 0105, and 0110 for the language | The rule in ADR-0001 only. The sample has no requirements file |
 
 ### Where the convention lives
 
 | Source | Holds |
 | --- | --- |
 | [github-project-template](https://github.com/tabmadi/github-project-template) | The files that every repo copies: ADR-0001, the configs in `.config/`, and the GitHub forms |
-| [tabnix](https://github.com/tabmadi/tabnix), in `tools/` | The shared Nix code: the dev shell, the git hooks, the checks, and the NixOS modules |
-| [tablint](https://github.com/tabmadi/tablint), in `tools/` | The check of ADR-0001: prose, comments, and ADRs |
+| [tabnix](https://github.com/tabmadi/tabnix), in `tools/` | The shared Nix code: the dev shell, the git hooks, the checks, the opt-in modules for templates and Bun, and the NixOS modules |
+| [tablint](https://github.com/tabmadi/tablint), in `tools/` | The check of ADR-0001: prose, comments, ADRs, and the trace from each requirement to a test |
 | ADR-0001 in `sovereign-platform-template` | The long form of the doc rules, for a platform |
 
 ### Keeping the copies in sync
@@ -78,8 +78,8 @@ A template runs this code through a pinned tag, never through these checkouts. A
 
 | Tool | Description |
 | --- | --- |
-| [tabnix](https://github.com/tabmadi/tabnix) | The shared Nix toolchain as a flake-parts module, and opt-in NixOS modules for the machines that a repo runs |
-| [tablint](https://github.com/tabmadi/tablint) | The linter of the Simple English rules of ADR-0001 |
+| [tabnix](https://github.com/tabmadi/tabnix) | The shared Nix toolchain as a flake-parts module, opt-in flake modules for templates and Bun, and opt-in NixOS modules for the machines that a repo runs |
+| [tablint](https://github.com/tabmadi/tablint) | The linter of the Simple English rules of ADR-0001, and of the trace from each requirement to a test |
 
 ## Scripts
 
