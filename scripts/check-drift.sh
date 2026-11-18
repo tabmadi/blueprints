@@ -28,12 +28,30 @@ SHARED=(
   docs/adr/_template.md
 )
 
+# A platform keeps its long form of ADR-0001. Its section of shared terms still matches the source.
+PLATFORM=(nextjs-mvp-template sovereign-platform-template)
+ADR_0001=docs/adr/0001-documentation-conventions.md
+
+# Prints the section of shared terms of an ADR-0001: from its heading to the next heading.
+shared_terms() {
+  awk '/^### Shared terms$/ { on = 1 } on && /^##/ && !/^### Shared terms$/ { exit } on' "$1"
+}
+
 drift=0
 checked=0
 for repo in "$ROOT"/templates/*; do
   name="${repo#"$ROOT"/}"
   [[ "$repo" == "$SOURCE" || ! -f "$repo/flake.nix" ]] && continue
+  platform=0
+  for p in "${PLATFORM[@]}"; do [[ "$name" == "templates/$p" ]] && platform=1; done
   for f in "${SHARED[@]}"; do
+    if [[ $platform -eq 1 && "$f" == "$ADR_0001" ]]; then
+      if [[ "$(shared_terms "$SOURCE/$f")" != "$(shared_terms "$repo/$f")" ]]; then
+        echo "$name: the shared terms of $f differ from github-project-template"
+        drift=1
+      fi
+      continue
+    fi
     if [[ ! -f "$repo/$f" ]]; then
       echo "$name: $f is missing"
       drift=1

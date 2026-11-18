@@ -42,7 +42,7 @@ To change a copied rule:
 
 1. Change it in its source repo first.
 2. In the same pass, apply the change to every repo of that size.
-3. Run `scripts/check-drift.sh`. It fails when a shared file of a template on the Nix baseline differs from github-project-template.
+3. Run `scripts/check-drift.sh`. It fails when a shared file of a template on the Nix baseline differs from github-project-template. A platform keeps its long form of ADR-0001, and only its section of shared terms must match.
 
 ## Templates
 
