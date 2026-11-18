@@ -25,6 +25,12 @@ SHARED=(
   .github/workflows/check.yml
   LICENSE
   docs/adr/0001-documentation-conventions.md
+  docs/adr/0100-toolchain.md
+  docs/adr/0101-source-control-and-ci.md
+  docs/adr/0102-dependency-updates.md
+  docs/adr/0103-tasks.md
+  docs/adr/0104-formatters-and-linters.md
+  docs/adr/0105-editor.md
   docs/adr/_template.md
 )
 

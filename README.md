@@ -22,8 +22,8 @@ Every template follows one documentation convention and one toolchain. This repo
 
 | Size | Repos | README sections | ADRs |
 | --- | --- | --- | --- |
-| Platform | `sovereign-platform-template`, `nextjs-mvp-template` | Platform, per ADR-0001 | A full set |
-| Template | The other templates | Template, per ADR-0001 | 0000 foundations, 0001 doc rules, 0100 toolchain |
+| Platform | `sovereign-platform-template`, `nextjs-mvp-template` | Platform, per ADR-0001 | A full set, with the shared toolchain ADRs 0100 to 0105 |
+| Template | The other templates | Template, per ADR-0001 | 0000 foundations, 0001 doc rules, the shared toolchain ADRs 0100 to 0105, and 0110 for the language |
 
 ### Where the convention lives
 
