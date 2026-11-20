@@ -40,6 +40,9 @@ ADR_0001=docs/adr/0001-documentation-conventions.md
 # A platform can add its own package rules and custom managers to the Renovate config, such as a hold on a major
 # that its stack cannot take yet. Without those additions, the file still matches the source.
 RENOVATE=.github/renovate.json
+# A template can add its own lines after the shared lines of .gitattributes, such as a Linguist rule for a file that
+# only its stack generates.
+GITATTRIBUTES=.gitattributes
 
 # Prints a Renovate config without the package rules that the source does not have, and without custom managers.
 renovate_shared() {
@@ -70,6 +73,13 @@ for repo in "$ROOT"/templates/*; do
     if [[ $platform -eq 1 && "$f" == "$RENOVATE" && -f "$repo/$f" ]]; then
       if [[ "$(renovate_shared "$SOURCE/$f")" != "$(renovate_shared "$repo/$f")" ]]; then
         echo "$name: $f, without its own package rules, differs from github-project-template"
+        drift=1
+      fi
+      continue
+    fi
+    if [[ "$f" == "$GITATTRIBUTES" && -f "$repo/$f" ]]; then
+      if [[ "$(head -n "$(wc -l <"$SOURCE/$f")" "$repo/$f")" != "$(cat "$SOURCE/$f")" ]]; then
+        echo "$name: $f does not start with the lines of github-project-template"
         drift=1
       fi
       continue
