@@ -37,6 +37,15 @@ SHARED=(
 # A platform keeps its long form of ADR-0001. Its section of shared terms still matches the source.
 PLATFORM=(nextjs-mvp-template sovereign-platform-template)
 ADR_0001=docs/adr/0001-documentation-conventions.md
+# A platform can add its own package rules and custom managers to the Renovate config, such as a hold on a major
+# that its stack cannot take yet. Without those additions, the file still matches the source.
+RENOVATE=.github/renovate.json
+
+# Prints a Renovate config without the package rules that the source does not have, and without custom managers.
+renovate_shared() {
+  jq -S --slurpfile src "$SOURCE/$RENOVATE" \
+    '.packageRules |= map(select(. as $r | $src[0].packageRules | index([$r]))) | del(.customManagers)' "$1"
+}
 
 # Prints the section of shared terms of an ADR-0001: from its heading to the next heading.
 shared_terms() {
@@ -54,6 +63,13 @@ for repo in "$ROOT"/templates/*; do
     if [[ $platform -eq 1 && "$f" == "$ADR_0001" ]]; then
       if [[ "$(shared_terms "$SOURCE/$f")" != "$(shared_terms "$repo/$f")" ]]; then
         echo "$name: the shared terms of $f differ from github-project-template"
+        drift=1
+      fi
+      continue
+    fi
+    if [[ $platform -eq 1 && "$f" == "$RENOVATE" && -f "$repo/$f" ]]; then
+      if [[ "$(renovate_shared "$SOURCE/$f")" != "$(renovate_shared "$repo/$f")" ]]; then
+        echo "$name: $f, without its own package rules, differs from github-project-template"
         drift=1
       fi
       continue
