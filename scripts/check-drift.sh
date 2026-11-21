@@ -103,6 +103,17 @@ for repo in "$ROOT"/templates/*; do
   checked=$((checked + 1))
 done
 
+# The tools are not templates, but they carry the same issue forms and pull request template.
+for repo in "$ROOT"/tools/*; do
+  for f in .github/ISSUE_TEMPLATE/bug_report.yml .github/ISSUE_TEMPLATE/documentation_improvement.yml \
+    .github/ISSUE_TEMPLATE/feature_request.yml .github/PULL_REQUEST_TEMPLATE.md; do
+    if ! cmp -s "$SOURCE/$f" "$repo/$f"; then
+      echo "${repo#"$ROOT"/}: $f differs from github-project-template"
+      drift=1
+    fi
+  done
+done
+
 if [[ $drift -eq 0 ]]; then
   echo "No drift. Templates checked against github-project-template: $checked."
 fi
