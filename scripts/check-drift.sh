@@ -12,6 +12,7 @@ SHARED=(
   .config/cog.toml
   .config/dprint.json
   .config/gitleaks.toml
+  .config/renovate.json
   .config/rumdl.toml
   .envrc
   .gitattributes
@@ -23,6 +24,7 @@ SHARED=(
   .github/SECURITY.md
   .github/renovate.json
   .github/workflows/check.yml
+  .github/workflows/renovate.yml
   LICENSE
   docs/adr/0001-documentation-conventions.md
   docs/adr/0100-toolchain.md
@@ -43,6 +45,8 @@ RENOVATE=.github/renovate.json
 # A template can add its own lines after the shared lines of .gitattributes, such as a Linguist rule for a file that
 # only its stack generates.
 GITATTRIBUTES=.gitattributes
+# Sovereign runs Renovate for GitHub and Forgejo, with its own groups, per its ADR-0117.
+OWN_RENOVATE_RUN=(.config/renovate.json .github/workflows/renovate.yml)
 
 # Prints a Renovate config without the package rules that the source does not have, and without custom managers.
 renovate_shared() {
@@ -63,6 +67,10 @@ for repo in "$ROOT"/templates/*; do
   platform=0
   for p in "${PLATFORM[@]}"; do [[ "$name" == "templates/$p" ]] && platform=1; done
   for f in "${SHARED[@]}"; do
+    if [[ "$name" == "templates/sovereign-platform-template" && " ${OWN_RENOVATE_RUN[*]} " == *" $f "* ]]; then
+      [[ -f "$repo/$f" ]] || { echo "$name: $f is missing"; drift=1; }
+      continue
+    fi
     if [[ $platform -eq 1 && "$f" == "$ADR_0001" ]]; then
       if [[ "$(shared_terms "$SOURCE/$f")" != "$(shared_terms "$repo/$f")" ]]; then
         echo "$name: the shared terms of $f differ from github-project-template"
