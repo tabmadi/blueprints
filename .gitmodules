@@ -56,5 +56,5 @@
 	path = tools/tabnix
 	url = git@github.com:tabmadi/tabnix.git
 [submodule "tools/tablint"]
-	path = tools/tablint
-	url = git@github.com:tabmadi/tablint.git
+	path = tools/tabrules
+	url = git@github.com:tabmadi/tabrules.git
