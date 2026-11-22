@@ -8,14 +8,14 @@ The index of my GitHub templates and example projects. I start new work from one
 | --- | --- |
 | `templates/` | Bases to start a new project from |
 | `examples/` | Projects that each teach one stack or integration |
-| `tools/` | The shared code that every template runs: tabnix and tabrules |
+| `tools/` | The shared code that every template runs: tabkit |
 | `scripts/` | Scripts that act on every submodule at once |
 
 ## Conventions
 
 Every template follows one documentation convention and one toolchain. This repo exists to keep them the same in every template. The examples keep their own toolchain and docs, and these conventions do not apply to them.
 
-- **Simple English, no emoji.** This applies to every README, doc, comment, and `AGENTS.md`. tabrules checks it.
+- **Simple English, no emoji.** This applies to every README, doc, comment, and `AGENTS.md`. tabkit checks it.
 - **Each kind of doc has one place.** The README helps a reader choose the repo and start. `docs/` holds procedures and lookups. An ADR holds a decision.
 - **One toolchain shape.** Nix pins every tool, and `just` runs every task. Every repo has the recipes `setup`, `format`, `lint`, `test`, `check`, and `ci`, and its git hooks and CI workflow both run `just ci`.
 - **The size depends on the kind of repo.** A rule that is right for a platform is too heavy for a small template.
@@ -30,13 +30,12 @@ Every template follows one documentation convention and one toolchain. This repo
 | Source | Holds |
 | --- | --- |
 | [github-project-template](https://github.com/tabmadi/github-project-template) | The files that every repo copies: ADR-0001, the configs in `.config/`, and the GitHub forms |
-| [tabnix](https://github.com/tabmadi/tabnix), in `tools/` | The shared Nix code: the dev shell, the git hooks, the checks, the opt-in modules for templates, Bun, Go, and shell, and the NixOS modules |
-| [tabrules](https://github.com/tabmadi/tabrules), in `tools/` | The custom rules and generators: prose, comments, ADRs, the requirement trace, and the rules of the platform ADRs |
+| [tabkit](https://github.com/tabmadi/tabkit), in `tools/` | The shared code: the rules and generators, the dev shell, the git hooks, the checks, the opt-in modules for templates, Bun, Go, and shell, and the NixOS modules |
 | ADR-0001 in `sovereign-platform-template` | The long form of the doc rules, for a platform |
 
 ### Keeping the copies in sync
 
-Text that a person reads is copied into each repo, so the repo stands on its own. Code that runs is shared: tabnix and tabrules ship it, each repo pins a tag, and its gate decides when to move. Renovate keeps the pins current.
+Text that a person reads is copied into each repo, so the repo stands on its own. Code that runs is shared: tabkit ships it, each repo pins a tag, and its gate decides when to move. Renovate keeps the pins current.
 
 To change a copied rule:
 
@@ -82,8 +81,7 @@ A template runs this code through a pinned tag, never through these checkouts. A
 
 | Tool | Description |
 | --- | --- |
-| [tabnix](https://github.com/tabmadi/tabnix) | The shared Nix toolchain as a flake-parts module, opt-in flake modules for templates, Bun, Go, and shell, and opt-in NixOS modules for the machines that a repo runs |
-| [tabrules](https://github.com/tabmadi/tabrules) | Custom rules and generators that read the files of a repository, with the Simple English profile as the default rule set |
+| [tabkit](https://github.com/tabmadi/tabkit) | One versioned repository for the custom rules and generators, the shared Nix toolchain, opt-in flake modules, and opt-in NixOS modules |
 
 ## Scripts
 

@@ -52,9 +52,6 @@
 [submodule "examples/central-limit-order-book-example"]
 	path = examples/central-limit-order-book-example
 	url = git@github.com:tabmadi/central-limit-order-book-example.git
-[submodule "tools/tabnix"]
-	path = tools/tabnix
-	url = git@github.com:tabmadi/tabnix.git
-[submodule "tools/tablint"]
-	path = tools/tabrules
-	url = git@github.com:tabmadi/tabrules.git
+[submodule "tools/tabkit"]
+	path = tools/tabkit
+	url = git@github.com:tabmadi/tabkit.git
