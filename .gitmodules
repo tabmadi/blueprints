@@ -58,3 +58,6 @@
 [submodule "templates/php-template"]
 	path = templates/php-template
 	url = git@github.com:tabmadi/php-template.git
+[submodule "templates/laravel-template"]
+	path = templates/laravel-template
+	url = git@github.com:tabmadi/laravel-template.git

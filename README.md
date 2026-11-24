@@ -51,6 +51,7 @@ To change a copied rule:
 | [go-template](https://github.com/tabmadi/go-template) | Template | Go with the Standard Go Project Layout, every `golangci-lint` linter, and a static binary |
 | [python-template](https://github.com/tabmadi/python-template) | Template | Python with the `src` layout, `uv`, `ruff` with every rule, `pyrefly`, and `pytest` |
 | [php-template](https://github.com/tabmadi/php-template) | Template | PHP command-line projects and packages with Composer, Mago, and PHPUnit |
+| [laravel-template](https://github.com/tabmadi/laravel-template) | Template | A Laravel app with Blade, SQLite, Larastan, and sandboxed Nix checks |
 | [ts-template](https://github.com/tabmadi/ts-template) | Template | TypeScript on Bun with Biome and a strict `tsconfig`, and no build step |
 | [nextjs-mvp-template](https://github.com/tabmadi/nextjs-mvp-template) | Platform | A Next.js modular monolith for one product, one deployable, and one team, with ADR-driven docs. It runs at a provider, or on one NixOS machine of your own |
 | [sovereign-platform-template](https://github.com/tabmadi/sovereign-platform-template) | Platform | A self-hosted platform monorepo, with every reusable decision recorded as an ADR and enforced in CI |
