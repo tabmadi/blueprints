@@ -55,3 +55,6 @@
 [submodule "tools/tabkit"]
 	path = tools/tabkit
 	url = git@github.com:tabmadi/tabkit.git
+[submodule "templates/php-template"]
+	path = templates/php-template
+	url = git@github.com:tabmadi/php-template.git
