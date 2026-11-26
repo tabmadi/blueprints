@@ -20,6 +20,7 @@ SHARED=(
   .github/ISSUE_TEMPLATE/bug_report.yml
   .github/ISSUE_TEMPLATE/documentation_improvement.yml
   .github/ISSUE_TEMPLATE/feature_request.yml
+  .github/ISSUE_TEMPLATE/maintenance.yml
   .github/PULL_REQUEST_TEMPLATE.md
   .github/SECURITY.md
   .github/labels.yml
@@ -107,7 +108,7 @@ done
 # The tools are not templates, but they carry the same issue forms, pull request template, and labels.
 for repo in "$ROOT"/tools/*; do
   for f in .github/ISSUE_TEMPLATE/bug_report.yml .github/ISSUE_TEMPLATE/documentation_improvement.yml \
-    .github/ISSUE_TEMPLATE/feature_request.yml .github/PULL_REQUEST_TEMPLATE.md .github/labels.yml; do
+    .github/ISSUE_TEMPLATE/feature_request.yml .github/ISSUE_TEMPLATE/maintenance.yml .github/PULL_REQUEST_TEMPLATE.md .github/labels.yml; do
     if ! cmp -s "$SOURCE/$f" "$repo/$f"; then
       echo "${repo#"$ROOT"/}: $f differs from github-project-template"
       drift=1
