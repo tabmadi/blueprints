@@ -6,3 +6,4 @@ Read [README.md](README.md) first. Its [Conventions](README.md#conventions) sect
 - Each submodule has its own `AGENTS.md`. Read it before you change that repo.
 - After a change to a copied file, run `scripts/check-drift.sh`.
 - Commit inside each changed submodule first, then commit the new pointers here. Never push.
+- No backward compatibility. Never commit a command, option, or config field that exists only for a migration, such as a rename map or a deprecated fallback. Run the migration once by hand, and commit only the end state.

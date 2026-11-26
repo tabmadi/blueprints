@@ -29,7 +29,7 @@ Every template follows one documentation convention and one toolchain. This repo
 
 | Source | Holds |
 | --- | --- |
-| [github-project-template](https://github.com/tabmadi/github-project-template) | The files that every repo copies: ADR-0001, the configs in `.config/`, and the GitHub forms |
+| [github-project-template](https://github.com/tabmadi/github-project-template) | The files that every repo copies: ADR-0001, the configs in `.config/`, the GitHub forms, and the label set |
 | [tabkit](https://github.com/tabmadi/tabkit), in `tools/` | The shared code: the rules and generators, the dev shell, the git hooks, the checks, the opt-in modules for templates, Bun, Go, and shell, and the NixOS modules |
 | ADR-0001 in `sovereign-platform-template` | The long form of the doc rules, for a platform |
 
