@@ -36,6 +36,7 @@ SHARED=(
   docs/adr/0104-formatters-and-linters.md
   docs/adr/0105-editor.md
   docs/adr/_template.md
+  docs/egress.md
 )
 
 # A platform keeps its long form of ADR-0001. Its section of shared terms still matches the source.
